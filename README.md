@@ -4,7 +4,7 @@ Program : Daftar Buku dengan Penjualan Terbaik
 Component : Redux, Axios, NavigationContainer
 
 Tugas: 
-- Pull Template React Native
+- Commit and Push Template React Native
 - buat App.js
 - buat RootNavigator.js
 - buat component: Bookslist.js
