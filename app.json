@@ -1,4 +1,6 @@
 {
+  "name": "Tugas_ALP_Group3",
+  "displayName": "Tugas_ALP_Group3",
   "expo": {
     "name": "redux-persist-asyncstorage",
     "slug": "redux-persist-asyncstorage",

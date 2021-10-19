@@ -46,7 +46,7 @@ const RootNavigator = () => {
           tabBarIcon: ({ color }) => screenOptions(route, color)
         })}
       >
-        <Tab.Screen name='BooksList' component={BooksList} />
+        <Tab.Screen name='Daftar Buku' component={BooksList} />
         <Tab.Screen name='BookmarksList' component={BookmarksList} />
       </Tab.Navigator>
     </NavigationContainer>

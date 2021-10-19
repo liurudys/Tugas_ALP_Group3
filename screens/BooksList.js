@@ -120,7 +120,7 @@ export default function BooksList() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#1E1B26' }}>
       <View style={{ flex: 1, paddingHorizontal: 16 }}>
-        <Text style={{ color: 'white', fontSize: 22 }}>Bestsellers</Text>
+        <Text style={{ color: 'white', fontSize: 22 }}>Penjualan Terbaik :</Text>
         <View style={{ flex: 1, marginTop: 8 }}>
           <FlatList
             data={books}
