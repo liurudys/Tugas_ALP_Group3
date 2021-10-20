@@ -25,7 +25,8 @@ export const getBooks = () => {
     };
   } catch (error) {
     // Add custom logic to handle errors
-    console.log(error);
+    console.log('ada error : ',error);
+
   }
 };
 
