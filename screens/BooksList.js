@@ -10,9 +10,8 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import {setBook,BookSelector,setBookMark,removeBookmark} from '../redux/BookSlice'
-import axios from "axios";
-import { BASE_URL } from '../config';
+import {setBook,BookSelector,setBookMark,removeBookmark,getBook} from '../redux/BookSlice'
+
 export default function BooksList() {
   const books = useSelector(BookSelector);
   const dispatch = useDispatch();
@@ -22,11 +21,7 @@ export default function BooksList() {
   const removeFromBookmarkList = book => dispatch(removeBookmark(book));
 
   useEffect(() => {
-    axios.get(BASE_URL).then(
-      (r)=>{
-        dispatch(setBook(r.data))
-      }
-    )
+    dispatch(getBook())
   }, []);
 
   const handleAddBookmark = book => {
@@ -125,7 +120,7 @@ export default function BooksList() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#1E1B26' }}>
       <View style={{ flex: 1, paddingHorizontal: 16 }}>
-        <Text style={{ color: 'white', fontSize: 22 }} onPress={()=>console.log(books.book)}>Penjualan Terbaik :</Text>
+        <Text style={{ color: 'white', fontSize: 22 }} onPress={()=>dispatch(getBook())}>Penjualan Terbaik :</Text>
         <View style={{ flex: 1, marginTop: 8 }}>
           <FlatList
             data={books.book.books}

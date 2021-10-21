@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
+import axios from 'axios'
 import { BASE_URL } from '../config';
 
 const initialState = {
@@ -6,6 +7,10 @@ const initialState = {
     bookmarks: []
 };
 
+export const getBook = createAsyncThunk('book/getBook',async ()=>{
+    const result = await axios.get(BASE_URL)
+    return result.data
+})
 const BookSlice = createSlice({
     name:'book',
     initialState,
@@ -22,6 +27,12 @@ const BookSlice = createSlice({
             const filerBookmark = s.bookmarks.filter(x=>x.id !== payload.payload.id)
             s.bookmarks = filerBookmark
             return s
+        }
+    },
+    extraReducers:{
+        [getBook.fulfilled]:(state,action)=>{
+            state.books = action.payload
+            return state
         }
     }
 })
