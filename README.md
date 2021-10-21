@@ -5,18 +5,17 @@ React Native
 
 
 Program : Daftar Buku dengan Penjualan Terbaik
-
-
+          
+          
 Component : Redux, Axios, NavigationContainer
 
-### Rudy Liu
-Tugas:
-
+### Liu Rudy Sofyan
 - Commit and Push Template React Native
-
 - buat App.js
-
 - buat RootNavigator.js
+- buat booklists.js
+- buat bookmarks.js
+- configurasi AndroidManifest.xml karena sebelumnya tidak jalan melalui devices (hp)
 
 ### Excel Antonio
 - Redux
