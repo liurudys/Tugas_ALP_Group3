@@ -5,11 +5,12 @@ React Native
 
 
 Program : Daftar Buku dengan Penjualan Terbaik
-          
+         
           
 Component : Redux, Axios, NavigationContainer
 
 ### Liu Rudy Sofyan
+- buat branch baru di github sebagai branch master
 - Commit and Push Template React Native
 - buat App.js
 - buat RootNavigator.js
