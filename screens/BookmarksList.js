@@ -10,10 +10,10 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import { removeBookmark } from '../redux/actions';
+import { removeBookmark,BookSelector } from '../redux/BookSlice';
 
 export default function BookmarksList() {
-  const { bookmarks } = useSelector(state => state.booksReducer);
+  const bookmark = useSelector(BookSelector);
   const dispatch = useDispatch();
 
   const removeFromBookmarkList = book => dispatch(removeBookmark(book));
@@ -98,15 +98,15 @@ export default function BookmarksList() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#1E1B26' }}>
       <View style={{ flex: 1, paddingHorizontal: 16 }}>
-        <Text style={{ color: 'white', fontSize: 22 }}>Bookmarks</Text>
+        <Text style={{ color: 'white', fontSize: 22 }} onPress={()=>console.log(bookmark.book.bookmarks)}>Bookmarks</Text>
         <View style={{ flex: 1, marginTop: 8 }}>
-          {bookmarks.length === 0 ? (
+          {!bookmark.book.bookmarks ? (
             <Text style={{ color: '#64676D', fontSize: 18 }}>
               Add a book to bookmark list.
             </Text>
           ) : (
             <FlatList
-              data={bookmarks}
+              data={bookmark.book.bookmarks}
               keyExtractor={item => item.id.toString()}
               renderItem={renderItem}
               showsVerticalScrollIndicator={false}

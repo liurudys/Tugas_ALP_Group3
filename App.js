@@ -14,9 +14,7 @@ LogBox.ignoreAllLogs();
 export default function App() {
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <RootNavigator />
-      </PersistGate>
+      <RootNavigator />
     </Provider>
   );
 }
