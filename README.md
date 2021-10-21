@@ -10,6 +10,5 @@ Tugas:
 - Commit and Push Template React Native
 - buat App.js
 - buat RootNavigator.js
-- buat component: Bookslist.js
 
 Rudy Liu
