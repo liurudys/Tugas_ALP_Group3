@@ -100,7 +100,7 @@ export default function BookmarksList() {
       <View style={{ flex: 1, paddingHorizontal: 16 }}>
         <Text style={{ color: 'white', fontSize: 22 }} onPress={()=>console.log(bookmark.book.bookmarks)}>Bookmarks</Text>
         <View style={{ flex: 1, marginTop: 8 }}>
-          {!bookmark.book.bookmarks ? (
+          {bookmark.book.bookmarks.length === 0 ? (
             <Text style={{ color: '#64676D', fontSize: 18 }}>
               Add a book to bookmark list.
             </Text>
