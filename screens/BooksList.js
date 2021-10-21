@@ -10,18 +10,23 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import { getBooks, addBookmark, removeBookmark } from '../redux/actions';
-
+import {setBook,BookSelector,setBookMark,removeBookmark} from '../redux/BookSlice'
+import axios from "axios";
+import { BASE_URL } from '../config';
 export default function BooksList() {
-  const { books, bookmarks } = useSelector(state => state.booksReducer);
+  const books = useSelector(BookSelector);
   const dispatch = useDispatch();
 
-  const fetchBooks = () => dispatch(getBooks());
-  const addToBookmarkList = book => dispatch(addBookmark(book));
+ 
+  const addToBookmarkList = book => dispatch(setBookMark(book));
   const removeFromBookmarkList = book => dispatch(removeBookmark(book));
 
   useEffect(() => {
-    fetchBooks();
+    axios.get(BASE_URL).then(
+      (r)=>{
+        dispatch(setBook(r.data))
+      }
+    )
   }, []);
 
   const handleAddBookmark = book => {
@@ -33,7 +38,7 @@ export default function BooksList() {
   };
 
   const ifExists = book => {
-    if (bookmarks.filter(item => item.id === book.id).length > 0) {
+    if (books.book.bookmarks.find(item => item.id === book.id)) {
       return true;
     }
 
@@ -120,10 +125,10 @@ export default function BooksList() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#1E1B26' }}>
       <View style={{ flex: 1, paddingHorizontal: 16 }}>
-        <Text style={{ color: 'white', fontSize: 22 }}>Penjualan Terbaik :</Text>
+        <Text style={{ color: 'white', fontSize: 22 }} onPress={()=>console.log(books.book)}>Penjualan Terbaik :</Text>
         <View style={{ flex: 1, marginTop: 8 }}>
           <FlatList
-            data={books}
+            data={books.book.books}
             keyExtractor={item => item.id.toString()}
             renderItem={renderItem}
             showsVerticalScrollIndicator={false}
