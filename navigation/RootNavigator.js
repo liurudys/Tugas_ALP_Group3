@@ -6,13 +6,14 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 // Import mock screens
 import BooksList from '../screens/BooksList';
 import BookmarksList from '../screens/BookmarksList';
+import UserList from '../screens/UserList';
 
 const Tab = createBottomTabNavigator();
 
 const tabBarOptions = {
-  showLabel: false,
+  showLabel: true,
   inactiveTintColor: '#2D3038',
-  activeTintColor: '#FFFFFF',
+  activeTintColor: '#000000',
   style: {
     height: '10%',
     backgroundColor: '#1E1B26'
@@ -47,7 +48,8 @@ const RootNavigator = () => {
         })}
       >
         <Tab.Screen name='Daftar Buku' component={BooksList} />
-        <Tab.Screen name='BookmarksList' component={BookmarksList} />
+        <Tab.Screen name='Bookmarks List' component={BookmarksList} />
+        <Tab.Screen name='All User List' component={UserList} />
       </Tab.Navigator>
     </NavigationContainer>
   );

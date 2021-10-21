@@ -22,5 +22,7 @@ Tugas:
 - Redux
 
 ### Wellson Leewando
+- Buat UserList untuk melihat semua user
+
 ### Christians Salim
 ### Steven Ciputra
