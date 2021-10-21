@@ -21,7 +21,7 @@ Tugas:
 ### Excel Antonio
 - Redux
 
-### Wellson Leewando
+### Wellson Leewando (Github username: DangeRSouL98)
 - Buat UserList untuk melihat semua user
 
 ### Christians Salim
