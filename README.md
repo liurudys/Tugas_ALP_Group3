@@ -26,3 +26,6 @@ Component : Redux, Axios, NavigationContainer
 
 ### Christians Salim
 ### Steven Ciputra
+- navigasi booklist ke bookdetail
+- navigasi bookmarks ke bookdetail
+- buat BookDetail
