@@ -5,17 +5,21 @@ import {
   FlatList,
   TouchableOpacity,
   Image,
-  SafeAreaView
+  SafeAreaView,
+  Button
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 
 import {setBook,BookSelector,setBookMark,removeBookmark,getBook} from '../redux/BookSlice'
 
 export default function BooksList() {
   const books = useSelector(BookSelector);
   const dispatch = useDispatch();
-
+  const navigation = useNavigation();
  
   const addToBookmarkList = book => dispatch(setBookMark(book));
   const removeFromBookmarkList = book => dispatch(removeBookmark(book));
@@ -50,13 +54,17 @@ export default function BooksList() {
             resizeMode='cover'
             style={{ width: 100, height: 150, borderRadius: 10 }}
           />
+           
+
           {/* Book Metadata */}
           <View style={{ flex: 1, marginLeft: 12 }}>
             {/* Book Title */}
             <View>
-              <Text style={{ fontSize: 22, paddingRight: 16, color: 'white' }}>
-                {item.title}
+            <TouchableOpacity onPress={() => navigation.navigate('BookDetail', { dataBuku : item.id })}>
+               <Text style={{ fontSize: 22, paddingRight: 16, color: 'white' }}>
+                  {item.title}
               </Text>
+            </TouchableOpacity>
             </View>
             {/* Meta info */}
             <View
@@ -128,6 +136,8 @@ export default function BooksList() {
             renderItem={renderItem}
             showsVerticalScrollIndicator={false}
           />
+         
+           
         </View>
       </View>
     </SafeAreaView>

@@ -11,10 +11,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { removeBookmark,BookSelector } from '../redux/BookSlice';
+import { useNavigation } from '@react-navigation/native';
 
 export default function BookmarksList() {
   const bookmark = useSelector(BookSelector);
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   const removeFromBookmarkList = book => dispatch(removeBookmark(book));
 
@@ -36,9 +38,11 @@ export default function BookmarksList() {
           <View style={{ flex: 1, marginLeft: 12 }}>
             {/* Book Title */}
             <View>
-              <Text style={{ fontSize: 22, paddingRight: 16, color: 'white' }}>
-                {item.title}
-              </Text>
+            <TouchableOpacity onPress={() => navigation.navigate('BookDetail', { dataBuku : item.id })}>
+                <Text style={{ fontSize: 22, paddingRight: 16, color: 'white' }}>
+                  {item.title}
+                </Text>
+            </TouchableOpacity>
             </View>
             {/* Meta info */}
             <View
