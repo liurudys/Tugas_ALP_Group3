@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-
+import BookmarkIcn from '../assets/book-plus.png'
 import { removeBookmark,BookSelector } from '../redux/BookSlice';
 import { useNavigation } from '@react-navigation/native';
 
@@ -86,10 +86,9 @@ export default function BookmarksList() {
                   width: 40
                 }}
               >
-                <MaterialCommunityIcons
-                  color='#64676D'
-                  size={24}
-                  name='bookmark-remove'
+                <Image 
+                  source={BookmarkIcn}
+                  style={{width:25,height:25}}
                 />
               </TouchableOpacity>
             </View>

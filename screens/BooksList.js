@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   Button
 } from 'react-native';
+import BookmarkIcn from '../assets/book-plus.png'
 import { useSelector, useDispatch } from 'react-redux';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -112,10 +113,9 @@ export default function BooksList() {
                   width: 40
                 }}
               >
-                <MaterialCommunityIcons
-                  color={ifExists(item) ? 'white' : '#64676D'}
-                  size={24}
-                  name={ifExists(item) ? 'bookmark-outline' : 'bookmark'}
+                <Image 
+                  source={BookmarkIcn}
+                  style={{width:25,height:25}}
                 />
               </TouchableOpacity>
             </View>

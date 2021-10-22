@@ -1,8 +1,12 @@
 import React from 'react';
+import { Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import BookmarkIcn from '../assets/book-marker.png'
+import UserIcon from '../assets/account.png'
+import BookListIcon from '../assets/book-open-variant.png'
 
 // Import mock screens
 import BooksList from '../screens/BooksList';
@@ -24,22 +28,7 @@ const tabBarOptions = {
   }
 };
 
-const screenOptions = (route, color) => {
-  let iconName;
 
-  switch (route.name) {
-    case 'BooksList':
-      iconName = 'view-dashboard';
-      break;
-    case 'BookmarksList':
-      iconName = 'bookmark-multiple-outline';
-      break;
-    default:
-      break;
-  }
-
-  return <MaterialCommunityIcons name={iconName} color={color} size={24} />;
-};
 
 const StackNavigator = () => {
   return (
@@ -65,14 +54,26 @@ const RootNavigator = () => {
       <Tab.Navigator
         initialRouteName="UserLists"
         tabBarOptions={tabBarOptions}
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ color }) => screenOptions(route, color)
-        })}
        screenOptions={{headerShown :false}}
       >
-        <Tab.Screen name='Daftar Buku' component={StackNavigator} />
-        <Tab.Screen name='Bookmarks List' component={StackNavigatorBookmark} />
-        <Tab.Screen name='All User List' component={UserList} />
+        <Tab.Screen name='Daftar Buku' 
+          component={StackNavigator} 
+          options={{
+            tabBarIcon:()=><Image source={BookListIcon} style={{width:24,height:24}}/>
+          }}
+        />
+        <Tab.Screen name='Bookmarks List' 
+          component={StackNavigatorBookmark} 
+          options={{
+            tabBarIcon:()=><Image source={BookmarkIcn} style={{width:24,height:24}}/>
+          }}
+        />
+        <Tab.Screen name='All User List' 
+          component={UserList} 
+          options={{
+            tabBarIcon:()=><Image source={UserIcon} style={{width:24,height:24}}/>
+          }}
+        />
       </Tab.Navigator>
      
       
