@@ -20,6 +20,7 @@ Component : Redux, Axios, NavigationContainer
 
 ### Excel Antonio
 - Redux
+- Fix Icon
 
 ### Wellson Leewando (Github username: DangeRSouL98)
 - Buat UserList untuk melihat semua user
