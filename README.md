@@ -11,6 +11,7 @@ Fungsi :
 Program disertai dengan tampilan icon daftar dari buku (booklist), icon menu untuk userlist dan icon menu bookmark list 
 
 Fitur:
+
 Tampilan daftar buku dalam bentuk card view di sertai dengan : 
 * Image atau gambar daftar buku 
 * Tatal Jumlah Halaman
@@ -26,11 +27,25 @@ https://example-data.draftbit.com/books?_limit=10
 
 https://jsonplaceholder.typicode.com/users
 
-Install :
+Penggunan Script Setup / Installasi :
 
-git clone ......
+1. git clone dari branch master Tugas_ALP_Group3
+    
+   > git clone https://github.com/liurudys/Tugas_ALP_Group3.git
 
+2. di CMD  (Command Prompt) :
+   
+  > cd \Tugas_ALP_Group3
+   
+3. di folder \Tugas_ALP_Group3  
+   
+   * nyalakan emulator / Devices (Hp) yang sudah standby dengan usb yg sudah tercolok ke devices (hp), kemudian :
+  
+   > npx react-native run-android
 
+   * setelah proses selesai untuk installasi APK nya ke emulator / devices hp
+
+   > npx react-native run-android
 
 Nama Anggota : 
 
