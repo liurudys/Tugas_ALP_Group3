@@ -14,7 +14,7 @@ Fitur:
 
 Tampilan daftar buku dalam bentuk card view di sertai dengan : 
 * Image atau gambar daftar buku 
-* Tatal Jumlah Halaman
+* Total Jumlah Halaman
 * Rating Buku
 * Tombol untuk Add untuk simpan ke halaman Daftar BookMarks List
 * Tampilan Statusbar dibagian bawahnya yg menampilkan menu icon untuk : BookListMovie, BookMarks List, dan UserList
