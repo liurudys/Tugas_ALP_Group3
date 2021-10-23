@@ -1,14 +1,22 @@
 import React from 'react';
+import { Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import BookmarkIcn from '../assets/book-marker.png'
+import UserIcon from '../assets/account.png'
+import BookListIcon from '../assets/book-open-variant.png'
 
 // Import mock screens
 import BooksList from '../screens/BooksList';
 import BookmarksList from '../screens/BookmarksList';
 import UserList from '../screens/UserList';
+import BookDetailScreen from '../screens/BookDetailScreen';
+import { startDetecting } from 'react-native/Libraries/Utilities/PixelRatio';
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 const tabBarOptions = {
   showLabel: true,
@@ -20,38 +28,57 @@ const tabBarOptions = {
   }
 };
 
-const screenOptions = (route, color) => {
-  let iconName;
 
-  switch (route.name) {
-    case 'BooksList':
-      iconName = 'view-dashboard';
-      break;
-    case 'BookmarksList':
-      iconName = 'bookmark-multiple-outline';
-      break;
-    default:
-      break;
-  }
 
-  return <MaterialCommunityIcons name={iconName} color={color} size={24} />;
-};
+const StackNavigator = () => {
+  return (
+      <Stack.Navigator>
+        <Stack.Screen name='BooksList' component={BooksList} />
+        <Stack.Screen name='BookDetail' component={BookDetailScreen} />
+      </Stack.Navigator>
+  )
+}
+
+const StackNavigatorBookmark = () => {
+  return (
+      <Stack.Navigator>
+        <Stack.Screen name='Bookmarks List' component={BookmarksList} />
+        <Stack.Screen name='BookDetail' component={BookDetailScreen} />
+      </Stack.Navigator>
+  )
+}
 
 const RootNavigator = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName='BooksList'
+        initialRouteName="UserLists"
         tabBarOptions={tabBarOptions}
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ color }) => screenOptions(route, color)
-        })}
+       screenOptions={{headerShown :false}}
       >
-        <Tab.Screen name='Daftar Buku' component={BooksList} />
-        <Tab.Screen name='Bookmarks List' component={BookmarksList} />
-        <Tab.Screen name='All User List' component={UserList} />
+        <Tab.Screen name='Daftar Buku' 
+          component={StackNavigator} 
+          options={{
+            tabBarIcon:()=><Image source={BookListIcon} style={{width:24,height:24}}/>
+          }}
+        />
+        <Tab.Screen name='Bookmarks List' 
+          component={StackNavigatorBookmark} 
+          options={{
+            tabBarIcon:()=><Image source={BookmarkIcn} style={{width:24,height:24}}/>
+          }}
+        />
+        <Tab.Screen name='All User List' 
+          component={UserList} 
+          options={{
+            tabBarIcon:()=><Image source={UserIcon} style={{width:24,height:24}}/>
+          }}
+        />
       </Tab.Navigator>
+     
+      
     </NavigationContainer>
+
   );
 };
 

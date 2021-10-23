@@ -5,23 +5,28 @@ import {
   FlatList,
   TouchableOpacity,
   Image,
-  SafeAreaView
+  SafeAreaView,
+  Button
 } from 'react-native';
+import BookmarkIcn from '../assets/book-plus.png'
 import { useSelector, useDispatch } from 'react-redux';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { getBooks, addBookmark, removeBookmark } from '../redux/actions';
+
+import {setBook,BookSelector,setBookMark,removeBookmark,getBook} from '../redux/BookSlice'
 
 export default function BooksList() {
-  const { books, bookmarks } = useSelector(state => state.booksReducer);
+  const books = useSelector(BookSelector);
   const dispatch = useDispatch();
-
-  const fetchBooks = () => dispatch(getBooks());
-  const addToBookmarkList = book => dispatch(addBookmark(book));
+  const navigation = useNavigation();
+ 
+  const addToBookmarkList = book => dispatch(setBookMark(book));
   const removeFromBookmarkList = book => dispatch(removeBookmark(book));
 
   useEffect(() => {
-    fetchBooks();
+    dispatch(getBook())
   }, []);
 
   const handleAddBookmark = book => {
@@ -33,7 +38,7 @@ export default function BooksList() {
   };
 
   const ifExists = book => {
-    if (bookmarks.filter(item => item.id === book.id).length > 0) {
+    if (books.book.bookmarks.find(item => item.id === book.id)) {
       return true;
     }
 
@@ -50,13 +55,17 @@ export default function BooksList() {
             resizeMode='cover'
             style={{ width: 100, height: 150, borderRadius: 10 }}
           />
+           
+
           {/* Book Metadata */}
           <View style={{ flex: 1, marginLeft: 12 }}>
             {/* Book Title */}
             <View>
-              <Text style={{ fontSize: 22, paddingRight: 16, color: 'white' }}>
-                {item.title}
+            <TouchableOpacity onPress={() => navigation.navigate('BookDetail', { dataBuku : item.id })}>
+               <Text style={{ fontSize: 22, paddingRight: 16, color: 'white' }}>
+                  {item.title}
               </Text>
+            </TouchableOpacity>
             </View>
             {/* Meta info */}
             <View
@@ -104,10 +113,9 @@ export default function BooksList() {
                   width: 40
                 }}
               >
-                <MaterialCommunityIcons
-                  color={ifExists(item) ? 'white' : '#64676D'}
-                  size={24}
-                  name={ifExists(item) ? 'bookmark-outline' : 'bookmark'}
+                <Image 
+                  source={BookmarkIcn}
+                  style={{width:25,height:25}}
                 />
               </TouchableOpacity>
             </View>
@@ -120,14 +128,16 @@ export default function BooksList() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#1E1B26' }}>
       <View style={{ flex: 1, paddingHorizontal: 16 }}>
-        <Text style={{ color: 'white', fontSize: 22 }}>Penjualan Terbaik :</Text>
+        <Text style={{ color: 'white', fontSize: 22 }} onPress={()=>dispatch(getBook())}>Penjualan Terbaik :</Text>
         <View style={{ flex: 1, marginTop: 8 }}>
           <FlatList
-            data={books}
+            data={books.book.books}
             keyExtractor={item => item.id.toString()}
             renderItem={renderItem}
             showsVerticalScrollIndicator={false}
           />
+         
+           
         </View>
       </View>
     </SafeAreaView>

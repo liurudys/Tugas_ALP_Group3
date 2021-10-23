@@ -9,12 +9,14 @@ import {
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-
-import { removeBookmark } from '../redux/actions';
+import BookmarkIcn from '../assets/book-plus.png'
+import { removeBookmark,BookSelector } from '../redux/BookSlice';
+import { useNavigation } from '@react-navigation/native';
 
 export default function BookmarksList() {
-  const { bookmarks } = useSelector(state => state.booksReducer);
+  const bookmark = useSelector(BookSelector);
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   const removeFromBookmarkList = book => dispatch(removeBookmark(book));
 
@@ -36,9 +38,11 @@ export default function BookmarksList() {
           <View style={{ flex: 1, marginLeft: 12 }}>
             {/* Book Title */}
             <View>
-              <Text style={{ fontSize: 22, paddingRight: 16, color: 'white' }}>
-                {item.title}
-              </Text>
+            <TouchableOpacity onPress={() => navigation.navigate('BookDetail', { dataBuku : item.id })}>
+                <Text style={{ fontSize: 22, paddingRight: 16, color: 'white' }}>
+                  {item.title}
+                </Text>
+            </TouchableOpacity>
             </View>
             {/* Meta info */}
             <View
@@ -82,10 +86,9 @@ export default function BookmarksList() {
                   width: 40
                 }}
               >
-                <MaterialCommunityIcons
-                  color='#64676D'
-                  size={24}
-                  name='bookmark-remove'
+                <Image 
+                  source={BookmarkIcn}
+                  style={{width:25,height:25}}
                 />
               </TouchableOpacity>
             </View>
@@ -100,13 +103,13 @@ export default function BookmarksList() {
       <View style={{ flex: 1, paddingHorizontal: 16 }}>
         <Text style={{ color: 'white', fontSize: 22 }}>Bookmarks</Text>
         <View style={{ flex: 1, marginTop: 8 }}>
-          {bookmarks.length === 0 ? (
+          {bookmark.book.bookmarks.length === 0 ? (
             <Text style={{ color: '#64676D', fontSize: 18 }}>
               Add a book to bookmark list.
             </Text>
           ) : (
             <FlatList
-              data={bookmarks}
+              data={bookmark.book.bookmarks}
               keyExtractor={item => item.id.toString()}
               renderItem={renderItem}
               showsVerticalScrollIndicator={false}
