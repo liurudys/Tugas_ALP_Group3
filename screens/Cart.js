@@ -1,53 +1,34 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
+  SafeAreaView,
   Text,
   View,
   FlatList,
   TouchableOpacity,
   Image,
-  SafeAreaView,
   StyleSheet
 } from 'react-native';
-import BookmarkIcn from '../assets/book-plus.png'
 import { useSelector, useDispatch } from 'react-redux';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import IncrementIcon from '../assets/increment.png'
+import DecrementIcon from '../assets/decrement.png'
+import { addToCart, removeFromCart, BookSelector } from '../redux/BookSlice';
 import { useNavigation } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-
-import {BookSelector, setBookMark, removeBookmark, getBook, addToCart} from '../redux/BookSlice'
-
-export default function BooksList() {
-  const books = useSelector(BookSelector);
+export default function BookmarksList() {
+  const cart = useSelector(BookSelector);
   const dispatch = useDispatch();
   const navigation = useNavigation();
- 
-  const addToBookmarkList = book => dispatch(setBookMark(book));
+
+  const removeFromCartList = book => dispatch(removeFromCart(book));
   const addToCartList = book => dispatch(addToCart(book));
-  const removeFromBookmarkList = book => dispatch(removeBookmark(book));
 
-  useEffect(() => {
-    dispatch(getBook())
-  }, []);
-
-  const handleAddBookmark = book => {
-    addToBookmarkList(book);
-  };
-
-  const handleRemoveBookmark = book => {
-    removeFromBookmarkList(book);
+  const handleRemoveFromCartList = book => {
+    removeFromCartList(book);
   };
 
   const handleAddToCart = book => {
     addToCartList(book);
-  };
-
-  const ifExists = book => {
-    if (books.book.bookmarks.find(item => item.id === book.id)) {
-      return true;
-    }
-
-    return false;
   };
 
   const renderItem = ({ item }) => {
@@ -60,16 +41,14 @@ export default function BooksList() {
             resizeMode='cover'
             style={{ width: 100, height: 150, borderRadius: 10 }}
           />
-           
-
           {/* Book Metadata */}
           <View style={{ flex: 1, marginLeft: 12 }}>
             {/* Book Title */}
             <View>
             <TouchableOpacity onPress={() => navigation.navigate('BookDetail', { dataBuku : item.id })}>
-               <Text style={{ fontSize: 22, paddingRight: 16, color: 'white' }}>
+                <Text style={{ fontSize: 22, paddingRight: 16, color: 'white' }}>
                   {item.title}
-              </Text>
+                </Text>
             </TouchableOpacity>
             </View>
             {/* Meta info */}
@@ -86,7 +65,7 @@ export default function BooksList() {
                 size={20}
               />
               <Text style={{ fontSize: 14, paddingLeft: 10, color: '#64676D' }}>
-               Pages: {item.num_pages}
+                {item.num_pages}
               </Text>
               <MaterialCommunityIcons
                 color='#64676D'
@@ -95,21 +74,18 @@ export default function BooksList() {
                 style={{ paddingLeft: 16 }}
               />
               <Text style={{ fontSize: 14, paddingLeft: 10, color: '#64676D' }}>
-                Rating: {item.rating}
+                {item.rating}
               </Text>
             </View>
             {/* Buttons */}
             <View style={{ marginTop: 14, flexDirection: 'row' }}>
+              
               <TouchableOpacity
-                onPress={() =>
-                  ifExists(item)
-                    ? handleRemoveBookmark(item)
-                    : handleAddBookmark(item)
-                }
+                onPress={() => handleRemoveFromCartList(item)}
                 activeOpacity={0.7}
                 style={{
                   padding: 2,
-                  backgroundColor: ifExists(item) ? '#F96D41' : '#2D3038',
+                  backgroundColor: '#2D3038',
                   borderRadius: 20,
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -118,15 +94,28 @@ export default function BooksList() {
                 }}
               >
                 <Image 
-                  source={BookmarkIcn}
+                  source={DecrementIcon}
                   style={{width:25,height:25}}
                 />
               </TouchableOpacity>
-
-              <TouchableOpacity onPress={() =>handleAddToCart(item)}>
-                <View style={styles.button}>
-                    <Text style={styles.buttonText}>Add To Cart</Text>
-                </View>
+              <Text style={styles.text}>{item.Amount}</Text>  
+              <TouchableOpacity
+                onPress={() => handleAddToCart(item)}
+                activeOpacity={0.7}
+                style={{
+                  padding: 2,
+                  backgroundColor: '#2D3038',
+                  borderRadius: 20,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: 40,
+                  width: 40
+                }}
+              >
+                <Image 
+                  source={IncrementIcon}
+                  style={{width:25,height:25}}
+                />
               </TouchableOpacity>
             </View>
           </View>
@@ -138,35 +127,32 @@ export default function BooksList() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#1E1B26' }}>
       <View style={{ flex: 1, paddingHorizontal: 16 }}>
-        <Text style={{ color: 'white', fontSize: 22 }} onPress={()=>dispatch(getBook())}>Best Top Seller</Text>
+        <Text style={{ color: 'white', fontSize: 22 }}>Cart</Text>
         <View style={{ flex: 1, marginTop: 8 }}>
-          <FlatList
-            data={books.book.books}
-            keyExtractor={item => item.id.toString()}
-            renderItem={renderItem}
-            showsVerticalScrollIndicator={false}
-          />
-         
-           
+          {cart.book.cart.length === 0 ? (
+            <Text style={{ color: '#64676D', fontSize: 18 }}>
+              Add a book to cart.
+            </Text>
+          ) : (
+            <FlatList
+              data={cart.book.cart}
+              keyExtractor={item => item.id.toString()}
+              renderItem={renderItem}
+              showsVerticalScrollIndicator={false}
+            />
+          )}
         </View>
       </View>
     </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
-  button: {
-      marginLeft: 50,
-      borderRadius: 8,
-      paddingVertical: 14,
-      paddingHorizontal: 10,
-      backgroundColor: '#2D3038'
-  },
-  buttonText: {
-      color: 'white',
-      fontWeight: 'bold',
-      textTransform: 'uppercase',
-      fontSize: 16,
-      textAlign: 'center'
-  }
+const styles = StyleSheet.create ({
+    text: {
+        fontSize: 22,
+        color: "white",
+        marginLeft: 40,
+        marginRight: 40,
+        textAlignVertical: 'center'
+    }
 })
