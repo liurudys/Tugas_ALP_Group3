@@ -68,7 +68,12 @@ Nama Anggota :
 
 ### Christians Salim
 - Membuat Cart.js
+<<<<<<< HEAD
 - Update content pada redux/BookSlice.js untuk kebutuhan
+=======
+- Update content pada redux/BookSlice.js untuk kebutuhan Cart
+- Menambahkan button AddToCart untuk Add ke Array Object Cart
+>>>>>>> Chris
 
 ### Steven Ciputra
 - navigasi booklist ke bookdetail

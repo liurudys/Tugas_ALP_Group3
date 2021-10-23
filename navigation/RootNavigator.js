@@ -7,12 +7,14 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import BookmarkIcn from '../assets/book-marker.png'
 import UserIcon from '../assets/account.png'
 import BookListIcon from '../assets/book-open-variant.png'
+import CartIcon from '../assets/cart.png'
 
 // Import mock screens
 import BooksList from '../screens/BooksList';
 import BookmarksList from '../screens/BookmarksList';
 import UserList from '../screens/UserList';
 import BookDetailScreen from '../screens/BookDetailScreen';
+import CartList from '../screens/Cart';
 import { startDetecting } from 'react-native/Libraries/Utilities/PixelRatio';
 
 const Tab = createBottomTabNavigator();
@@ -27,8 +29,6 @@ const tabBarOptions = {
     backgroundColor: '#1E1B26'
   }
 };
-
-
 
 const StackNavigator = () => {
   return (
@@ -74,11 +74,14 @@ const RootNavigator = () => {
             tabBarIcon:()=><Image source={UserIcon} style={{width:24,height:24}}/>
           }}
         />
+        <Tab.Screen name='Cart' 
+          component={CartList} 
+          options={{
+            tabBarIcon:()=><Image source={CartIcon} style={{width:24,height:24}}/>
+          }}
+        />
       </Tab.Navigator>
-     
-      
     </NavigationContainer>
-
   );
 };
 
