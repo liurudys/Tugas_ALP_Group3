@@ -23,7 +23,14 @@ React, Redux (Persist dan Thunk), Axios, NavigationContainer, dan Expo Component
 
 Resouce API : 
 https://example-data.draftbit.com/books?_limit=10
+
 https://jsonplaceholder.typicode.com/users
+
+Install :
+
+git clone ......
+
+
 
 Nama Anggota : 
 
