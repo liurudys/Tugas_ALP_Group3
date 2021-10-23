@@ -67,6 +67,9 @@ Nama Anggota :
 - Buat UserList untuk melihat semua user
 
 ### Christians Salim
+- Membuat Cart.js
+- Update content pada redux/BookSlice.js untuk kebutuhan
+
 ### Steven Ciputra
 - navigasi booklist ke bookdetail
 - navigasi bookmarks ke bookdetail
