@@ -33,7 +33,7 @@ const tabBarOptions = {
 const StackNavigator = () => {
   return (
       <Stack.Navigator>
-        <Stack.Screen name='BooksList' component={BooksList} />
+        <Stack.Screen name='Book List Movie' component={BooksList} />
         <Stack.Screen name='BookDetail' component={BookDetailScreen} />
       </Stack.Navigator>
   )
@@ -42,7 +42,7 @@ const StackNavigator = () => {
 const StackNavigatorBookmark = () => {
   return (
       <Stack.Navigator>
-        <Stack.Screen name='Bookmarks List' component={BookmarksList} />
+        <Stack.Screen name='BookMarks List' component={BookmarksList} />
         <Stack.Screen name='BookDetail' component={BookDetailScreen} />
       </Stack.Navigator>
   )
@@ -56,13 +56,13 @@ const RootNavigator = () => {
         tabBarOptions={tabBarOptions}
        screenOptions={{headerShown :false}}
       >
-        <Tab.Screen name='Daftar Buku' 
+        <Tab.Screen name='Book List Movie' 
           component={StackNavigator} 
           options={{
             tabBarIcon:()=><Image source={BookListIcon} style={{width:24,height:24}}/>
           }}
         />
-        <Tab.Screen name='Bookmarks List' 
+        <Tab.Screen name='BookMarks List' 
           component={StackNavigatorBookmark} 
           options={{
             tabBarIcon:()=><Image source={BookmarkIcn} style={{width:24,height:24}}/>

@@ -81,7 +81,7 @@ export default function BooksList() {
                 size={20}
               />
               <Text style={{ fontSize: 14, paddingLeft: 10, color: '#64676D' }}>
-                {item.num_pages}
+               Pages: {item.num_pages}
               </Text>
               <MaterialCommunityIcons
                 color='#64676D'
@@ -90,7 +90,7 @@ export default function BooksList() {
                 style={{ paddingLeft: 16 }}
               />
               <Text style={{ fontSize: 14, paddingLeft: 10, color: '#64676D' }}>
-                {item.rating}
+                Rating: {item.rating}
               </Text>
             </View>
             {/* Buttons */}
@@ -128,7 +128,7 @@ export default function BooksList() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#1E1B26' }}>
       <View style={{ flex: 1, paddingHorizontal: 16 }}>
-        <Text style={{ color: 'white', fontSize: 22 }} onPress={()=>dispatch(getBook())}>Penjualan Terbaik :</Text>
+        <Text style={{ color: 'white', fontSize: 22 }} onPress={()=>dispatch(getBook())}>Best Top Seller</Text>
         <View style={{ flex: 1, marginTop: 8 }}>
           <FlatList
             data={books.book.books}
