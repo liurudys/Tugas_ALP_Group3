@@ -32,13 +32,10 @@ const BookSlice = createSlice({
         addToCart:(s,payload)=>{
             let flag = false
             if (s.cart.length > 0) {
-                console.log('Lengthnya > 0')
                 for (let i = 0; i < s.cart.length; i++) {
                     if (s.cart[i].id == payload.payload.id) {
-                        console.log('IDnya sama')
                         flag = true
-
-                        console.log(s.cart[i].id + '_' + s.cart[i].Amount)
+                        
                         break;
                     }
                 }
@@ -68,7 +65,6 @@ const BookSlice = createSlice({
                     s.cart.push(cols)
                 }
             } else {
-                console.log('Lengthnya = 0')
                 var cols = {
                     id: payload.payload.id,
                     title: payload.payload.title,
@@ -100,7 +96,7 @@ const BookSlice = createSlice({
             } else {
                 id.Amount--
             }
-            console.log(s.cart)
+
             return s
         }
     },
