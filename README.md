@@ -2,7 +2,8 @@ Tugas ALP Group 3
 
 React Native Developer
 
-Deskripsi Program : 
+Deskripsi Program :
+
 Program Daftar Buku terkenal yang telah di Filmkan yang merupakan daftar buku dengan Penjualan Terbaik atau Top Seller, Program disertai dengan tampilan icon daftar buku (booklist), icon menu untuk userlist dan icon menu bookmark list untuk tampilkan daftar buku telah di klik tombol bulat nya sehingga masuk kedalam menu bookmark list.
 
 Component React : Redux, Axios, NavigationContainer, Expo, 
