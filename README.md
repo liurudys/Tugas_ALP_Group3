@@ -18,10 +18,13 @@ Tampilan daftar buku dalam bentuk card view di sertai dengan :
 * Rating Buku
 * Tombol untuk Add untuk simpan ke halaman Daftar BookMarks List
 * Tombol untuk Add Card Basket dan Icon Basket List untuk pembelian buku dipilih
-* Tampilan Statusbar dibagian bawahnya yg menampilkan menu icon untuk : BookListMovie, BookMarks List, dan UserList
+* Tampilan Statusbar dibagian bawahnya yg menampilkan menu icon untuk : 
+  1. BookListMovie ke screen BooksList Detail
+  2. BookMarks List ke screen BookMarks Detail
+  3. UserList untuk menampilkan nama-nama user
 
 Thirty Party React : 
-React, Redux (Persist dan Thunk), Axios, NavigationContainer, dan Expo Component
+Redux (Persist dan Thunk), Axios, NavigationContainer, dan Expo Component
 
 Resouce API : 
 
@@ -41,7 +44,7 @@ Penggunan Script Setup / Installasi :
    
 3. di folder \Tugas_ALP_Group3  
    
-   * nyalakan emulator android atau Devices (Hp/smartphone) yang sudah standby dengan usb yg sudah tercolok ke devices (hp), kemudian :
+   * nyalakan emulator android atau Devices (Hp/smartphone) yang sudah standby dengan usb yg sudah tercolok ke device (hp), kemudian :
   
    > npx react-native run-android
 
@@ -74,5 +77,5 @@ Nama Anggota :
 
 ### Steven Ciputra
 - navigasi booklist ke bookdetail
-- navigasi bookmarks ke bookdetail
+- navigasi bookmarks ke bookmarksdetail
 - buat BookDetail
