@@ -17,6 +17,7 @@ Tampilan daftar buku dalam bentuk card view di sertai dengan :
 * Total Jumlah Halaman
 * Rating Buku
 * Tombol untuk Add untuk simpan ke halaman Daftar BookMarks List
+* Tombol untuk Add Card Basket dan Icon Basket List untuk pembelian buku dipilih
 * Tampilan Statusbar dibagian bawahnya yg menampilkan menu icon untuk : BookListMovie, BookMarks List, dan UserList
 
 Thirty Party React : 
