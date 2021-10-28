@@ -46,6 +46,8 @@ Penggunan Script Setup / Installasi :
 3. di folder \Tugas_ALP_Group3  
    
    * nyalakan emulator android atau Devices (Hp/smartphone) yang sudah standby dengan usb yg sudah tercolok ke device (hp), kemudian :
+   
+   > npm install 
   
    > npx react-native run-android
 
