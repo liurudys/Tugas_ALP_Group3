@@ -53,6 +53,10 @@ Penggunan Script Setup / Installasi :
 
    > npx react-native start
 
+4. Link Download APK (hasil build) :
+
+   https://drive.google.com/file/d/1EuTEaAaNLAn76dwcI_O8j6Ryb_847kaa/view
+
 Nama Anggota : 
 
 ### Liu Rudy Sofyan
@@ -63,6 +67,7 @@ Nama Anggota :
 - buat booklists.js
 - buat bookmarks.js
 - configurasi AndroidManifest.xml karena sebelumnya tidak jalan melalui devices (hp)
+- build Apk Release dan taruh link share google drive
 
 ### Excel Antonio
 - Redux
